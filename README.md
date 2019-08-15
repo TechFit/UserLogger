@@ -1,7 +1,7 @@
 # UserLogger
 API for storing user actions
 
-INSTALLATION:
+<b>INSTALLATION:</b>
 1. create in mysql database
 2. composer install
 3. cp .env.example .env and set configuration
@@ -9,7 +9,7 @@ INSTALLATION:
 5. php artisan migrate
 6. enjoy :)
 
-API Endpoint's
+<b>API Endpoint's</b>
 
 POST /api/register 
 body_params: nickname, firstname, lastname, age, password
@@ -24,5 +24,5 @@ POST /api/track/add
 headers: Authorization, "Bearer " . $token
 body_params: source_label: action_name
 
-TESTING:
+<b>TESTING:</b>
 run in terminal vendor/bin/phpunit 
