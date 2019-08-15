@@ -16,6 +16,7 @@ class SlowStorageService  implements SlowStorageInterface
      */
     public function store(string $path, string $content): void
     {
+        sleep(5); // simulation of slowness
         file_put_contents($path, $content, LOCK_EX);
     }
     /**
@@ -23,6 +24,7 @@ class SlowStorageService  implements SlowStorageInterface
      */
     public function append(string $path, string $content): void
     {
+        sleep(5); // simulation of slowness
         file_put_contents($path, $content, FILE_APPEND | LOCK_EX);
     }
     /**
