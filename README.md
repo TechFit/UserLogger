@@ -1,4 +1,4 @@
-# UserLogger
+# UserLogger (Laravel)
 API for storing user actions
 
 <b>INSTALLATION:</b>
