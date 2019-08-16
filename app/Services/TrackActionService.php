@@ -3,10 +3,6 @@
 namespace App\Services;
 
 use App\Services\SlowStorage\SlowStorageService;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\ServiceProvider;
-use Mockery\Exception;
 
 /**
  * Class TrackActionService
@@ -14,13 +10,13 @@ use Mockery\Exception;
  */
 class TrackActionService
 {
-    public function make(string $source_label, SlowStorageService $slowStorageService): bool
+    public function make(string $source_label, int $user_id, SlowStorageService $slowStorageService): bool
     {
         $track_object = [];
 
         $track_object['id'] = 1;
 
-        $track_object['id_user'] = Auth::guard('api')->user()['id'];
+        $track_object['id_user'] = $user_id;
 
         $track_object['source_label'] = $source_label;
 

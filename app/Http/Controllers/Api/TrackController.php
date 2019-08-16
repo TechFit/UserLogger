@@ -2,26 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Services\SlowStorage\SlowStorageService;
+use App\Jobs\TrackAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Services\TrackActionService;
 use Illuminate\Support\Facades\Validator;
 
 class TrackController extends BaseController
 {
-    /** @var TrackActionService $trackActionService */
-    private $trackActionService;
-
-    /** @var SlowStorageService $slowStorageService */
-    private $slowStorageService;
-
-    public function __construct(TrackActionService $trackActionService, SlowStorageService $slowStorageService)
-    {
-        $this->trackActionService = $trackActionService;
-        $this->slowStorageService = $slowStorageService;
-    }
-
     public function add(Request $request) {
 
         $validator = Validator::make($request->all(), [
@@ -32,8 +19,8 @@ class TrackController extends BaseController
             return response()->json(['error' => $validator->errors()], 401);
         }
 
-        $track = $this->trackActionService->make($request['source_label'], $this->slowStorageService);
+        dispatch(new TrackAction($request['source_label'], Auth::guard('api')->user()->id));
 
-        return $this->sendResponse($track, 'Tracked.');
+        return $this->sendResponse(true, 'Tracked.');
     }
 }
