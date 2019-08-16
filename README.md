@@ -7,7 +7,8 @@ API for storing user actions
 3. cp .env.example .env and set configuration
 4. php artisan key:generate
 5. php artisan migrate
-6. enjoy :)
+6. php artisan queue:work for <b>Queue</b>
+7. enjoy :)
 
 <b>API Endpoint's</b>
 
