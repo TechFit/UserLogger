@@ -4,7 +4,7 @@ API for storing user actions
 <b>INSTALLATION:</b>
 1. create in mysql database
 2. composer install
-3. cp .env.example .env and set configuration
+3. cp .env.example .env and set configuration for DB and <b>set queue_connection = database</b>
 4. php artisan key:generate
 5. php artisan migrate
 6. php artisan queue:work for <b>Queue</b>
